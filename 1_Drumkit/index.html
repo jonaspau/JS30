@@ -55,25 +55,21 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
-
-
-  function playSound(e){
+  function playSound(e){ //the function that plays the sounds
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     if(!audio) return; //stop the function if button has no audio data-key
     audio.currentTime =0; //rewind the audio to 0 before play (play reppeatedly)
     audio.play();
-    key.classList.add("playing");
-}
-
+    key.classList.add("playing"); //adds the playing class to the appropriate data-key element
+  }
   function removeTransition(e) {
     if (e.propertyName !== "transform") return;
     this.classList.remove("playing")
   }
-
   const keys = document.querySelectorAll(".key");
   keys.forEach(key => key.addEventListener("transitionend", removeTransition));
-  window.addEventListener("keydown", playSound);
+  window.addEventListener("keydown", playSound);//adds the function playSound to keypresses
   </script>
 </body>
 <footer>
